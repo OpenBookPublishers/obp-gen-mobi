@@ -1,0 +1,33 @@
+#!/bin/bash
+
+set -e
+
+for arg in "$@"
+do
+    case $arg in
+        -y|--yes)
+            FORCE_YES=1
+            shift
+            ;;
+    esac
+done
+
+function clean {
+    git clean -df
+}
+
+cd $(dirname $0)
+
+if [ "$FORCE_YES" = 1 ]
+then
+    clean
+else
+    git clean -dn
+
+    read -p "Do you want to continue? [Y/n] " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+	clean
+    fi
+fi
