@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -eu
+
+book_name=$1
+
+cd $(dirname $0)
+
+echo "Convert epub file to mobi"
+ebook-convert $book_name.epub $book_name.mobi > /dev/null
+
+if [ -f "$book_name.mobi" ]; then
+    echo "Created ./$book_name.mobi"
+fi
