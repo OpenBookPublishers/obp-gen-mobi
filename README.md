@@ -1,7 +1,18 @@
 # obp-gen-mobi
 Convert ebooks from epub to mobi format
 
-## How to run this tool
+## Run with docker
+```
+docker run \
+  -v /path/to/local.epub:/ebook_automation/epub_file.epub \
+  -v /path/to/output:/ebook_automation/output \
+  -e OUTDIR=/ebook_automation/output \
+  openbookpublishers/obp-gen-mobi
+```
+
+Alternatively you may clone the repo, build the image using `docker build . -t some/tag` and run the command above replacing `openbookpublishers/obp-epub-fixup` with `some/tag`.
+
+## Run locally
 ### Setup
 This script requires `calibre` to be installed on your system. On Debian (or Debian-based distributions) this package can be installed via
 
