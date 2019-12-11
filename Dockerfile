@@ -11,4 +11,6 @@ RUN wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sh /dev
 
 COPY run ./
 
+ENV OUTDIR=/ebook_automation/output
+
 CMD bash run epub_file
