@@ -13,7 +13,7 @@ cd $(dirname $0)
 ebook-convert $book_name.epub  $OUTDIR/$book_name.mobi \
 	      --remove-first-image  > /dev/null
 
-#ebook-convert $book_name.epub  $OUTDIR/$book_name.azw3 \
-#	      --embed-all-fonts \
-#	      --remove-first-image > /dev/null
+ebook-convert $book_name.epub  $OUTDIR/$book_name.azw3 \
+	      --embed-all-fonts \
+	      --remove-first-image > /dev/null
 
