@@ -10,9 +10,10 @@ fi
 
 cd $(dirname $0)
 
-echo "Convert epub file to mobi"
-ebook-convert $book_name.epub  $OUTDIR/$book_name.mobi > /dev/null
+ebook-convert $book_name.epub  $OUTDIR/$book_name.mobi \
+	      --remove-first-image  > /dev/null
 
-if [ -f "$book_name.mobi" ]; then
-    echo "Created  $OUTDIR/$book_name.mobi"
-fi
+#ebook-convert $book_name.epub  $OUTDIR/$book_name.azw3 \
+#	      --embed-all-fonts \
+#	      --remove-first-image > /dev/null
+
