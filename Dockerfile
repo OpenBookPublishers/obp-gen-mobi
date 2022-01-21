@@ -18,7 +18,7 @@ RUN rm requirements.txt
 COPY fonts/* /usr/share/fonts/
 RUN fc-cache -f -v
 
-ENV OUTDIR=/ebook_automation/output
+ENV OUT_DIR=/ebook_automation/output
 
 ENTRYPOINT ["python3"]
 
