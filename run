@@ -3,14 +3,14 @@
 set -eu
 
 book_name=$1
-if [ ! -n "$OUTDIR" ] || [ ! -n "$book_name" ]; then
-  echo 'You must set $OUTDIR and pass the books filename as the only argument'
+if [ ! -n "$OUT_DIR" ] || [ ! -n "$book_name" ]; then
+  echo 'You must set $OUT_DIR and pass the books filename as the only argument'
   exit 1
 fi
 
 cd $(dirname $0)
 
-ebook-convert $book_name.epub  $OUTDIR/$book_name.azw3 \
+ebook-convert $book_name.epub  $OUT_DIR/$book_name.azw3 \
 	      --embed-all-fonts \
 	      --remove-first-image > /dev/null
 

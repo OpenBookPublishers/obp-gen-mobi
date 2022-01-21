@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-from os import path
+from os import path, getenv
 from urllib.parse import urljoin
 import subprocess
 import argparse
 from thothlibrary import ThothClient
 
 RUN_PATH = '/ebook_automation/run'
-AZW3_PATH = '/ebook_automation/output/epub_file.azw3'
+AZW3_PATH = path.join(getenv('OUT_DIR'), 'file.azw3')
 TYPES = {'MOBI', 'AZW3'}
 
 def add_isbn(isbn):
@@ -23,7 +23,7 @@ def main():
     args = parser.parse_args()
 
     # Execute run.sh
-    cmd = f'bash {RUN_PATH} epub_file'
+    cmd = f'bash {RUN_PATH} file'
     p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE,
                          stderr=subprocess.PIPE)
     stdout, stderr = p.communicate()
