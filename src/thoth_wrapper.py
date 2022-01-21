@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-from os import path
+from os import path, getenv
 from urllib.parse import urljoin
 import subprocess
 import argparse
 from thothlibrary import ThothClient
 
 RUN_PATH = '/ebook_automation/run'
-AZW3_PATH = '/ebook_automation/output/file.azw3'
+AZW3_PATH = path.join(getenv('OUT_DIR'), 'file.azw3')
 TYPES = {'MOBI', 'AZW3'}
 
 def add_isbn(isbn):
