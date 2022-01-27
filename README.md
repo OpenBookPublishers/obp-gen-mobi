@@ -20,7 +20,7 @@ would remove temporary files (untracked files and folders stored in the _obp-gen
 
 ### Installation
 
-Clone the repo and build the image with $ `docker build . -t openbookpublishers/obp-epub-fixup`.
+Clone the repo and build the image with $ `docker build . -t openbookpublishers/obp-gen-mobi`.
 
 ### Usage
 
