@@ -6,11 +6,10 @@ import argparse
 from thothlibrary import ThothClient
 
 RUN_PATH = '/ebook_automation/run'
-AZW3_PATH = path.join(getenv('OUT_DIR'), 'file.azw3')
 TYPES = {'MOBI', 'AZW3'}
 
-def add_isbn(isbn):
-    cmd = f'ebook-meta {AZW3_PATH} --isbn {isbn}'
+def add_isbn(azw3_path, isbn):
+    cmd = f'ebook-meta {azw3_path} --isbn {isbn}'
     p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE,
                          stderr=subprocess.PIPE)
     stdout, stderr = p.communicate()
@@ -22,8 +21,10 @@ def main():
                         help='DOI of the work (registered in Thoth)')
     args = parser.parse_args()
 
+    azw3_path = path.join(getenv('OUT_DIR'), args.doi.split('/')[-1] + '.azw3')
+    
     # Execute run.sh
-    cmd = f'bash {RUN_PATH} file'
+    cmd = f'bash {RUN_PATH} -i file.epub -o {azw3_path}'
     p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE,
                          stderr=subprocess.PIPE)
     stdout, stderr = p.communicate()
@@ -36,7 +37,7 @@ def main():
 
     for publication in query['publications']:
         if publication['publicationType'] in TYPES:
-            add_isbn(publication['isbn'])
+            add_isbn(azw3_path, publication['isbn'])
             break
     else:
         raise ValueError(f'No {",".join(TYPES)} format(s) defined in Thoth')
