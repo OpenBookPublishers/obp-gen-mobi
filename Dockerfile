@@ -3,7 +3,7 @@ FROM python:3.8.0-slim-buster
 WORKDIR /ebook_automation
 
 RUN apt-get update && \
-    apt-get install -y calibre fontconfig
+    apt-get install -y calibre=3.39.1+dfsg-3 fontconfig
 
 RUN rm -rf /var/cache/apt/*
 
