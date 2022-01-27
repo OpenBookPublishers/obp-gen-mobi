@@ -5,14 +5,10 @@ A tool to convert EPUBs to AZW3
 
 ### Installation
 
-This script requires `calibre` to be installed on your system. On Debian (or Debian-based distributions) this package can be installed via $ `apt-get install calibre`.
+This script depends on `calibre`. On Debian (or Debian-based distributions) this package can be installed via $ `apt-get install calibre`.
 
 ### Usage
-To run the process, place a copy of the **epub edition of the book** in the _obp-gen-mobi_ folder. Finally, run:
-
-`bash run prefix`
-
-where _prefix_ is the name of the book; i.e.: `bash run Screpanti-Labour-Value`.
+$ `bash run -i input_file.epub -o output_file.azw3`
 
 ### Clean-up
 
@@ -33,7 +29,7 @@ docker run --rm \
            -v /path/to/local.epub:/ebook_automation/epub_file.epub \
 	   -v /path/to/output:/ebook_automation/output \
            openbookpublishers/obp-gen-mobi \
-	   bash run epub_file
+	   bash run -i input_file.epub -o output_file.azw3
 ```
 
 ## Thoth Wrapper (Optional)
