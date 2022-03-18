@@ -31,7 +31,7 @@ def main():
     
     doi_url = urljoin('https://doi.org/', args.doi)
 
-    thoth = ThothClient(version="0.6.0")
+    thoth = ThothClient(version="0.8.0")
     query = thoth.query('workByDoi',
                         {'doi': f'"{doi_url}"'})
 
